@@ -22,7 +22,9 @@ export const Route = createFileRoute("/api/v1/tasks")({
           .order("created_at", { ascending: false })
           .limit(200);
 
-        if (status && ["todo", "doing", "done"].includes(status)) q = q.eq("status", status);
+        if (status && ["todo", "doing", "done"].includes(status)) {
+          q = q.eq("status", status as "todo" | "doing" | "done");
+        }
         if (projectId) q = q.eq("project_id", projectId);
 
         const { data, error } = await q;
