@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { VeltrionLogo } from "@/components/VeltrionLogo";
 
 const searchSchema = z.object({
   mode: z.enum(["login", "signup"]).optional(),
@@ -16,7 +17,7 @@ const searchSchema = z.object({
 export const Route = createFileRoute("/login")({
   validateSearch: searchSchema,
   head: () => ({
-    meta: [{ title: "Entrar — Tarefly" }],
+    meta: [{ title: "Entrar — Veltrion Systems" }],
   }),
   component: LoginPage,
 });
@@ -66,8 +67,8 @@ function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-muted/40 px-4 py-12">
       <div className="w-full max-w-md">
         <Link to="/" className="mb-6 flex items-center justify-center gap-2">
-          <div className="h-8 w-8 rounded-md bg-primary" aria-hidden />
-          <span className="font-display text-xl font-bold">Tarefly</span>
+          <VeltrionLogo className="h-8 w-8" />
+          <span className="font-display text-xl font-bold">Veltrion Systems</span>
         </Link>
         <Card>
           <CardHeader>

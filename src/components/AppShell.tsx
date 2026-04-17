@@ -4,6 +4,7 @@ import { useState, type ReactNode } from "react";
 import { useAuth } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { VeltrionLogo } from "@/components/VeltrionLogo";
 
 const nav = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -29,8 +30,8 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Mobile topbar */}
       <header className="fixed inset-x-0 top-0 z-30 flex h-14 items-center justify-between border-b border-border bg-card px-4 lg:hidden">
         <Link to="/dashboard" className="flex items-center gap-2 font-display text-lg font-bold">
-          <div className="h-7 w-7 rounded-md bg-primary" aria-hidden />
-          Tarefly
+          <VeltrionLogo className="h-7 w-7" />
+          Veltrion Systems
         </Link>
         <button
           aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -50,8 +51,8 @@ export function AppShell({ children }: { children: ReactNode }) {
         )}
       >
         <div className="hidden h-16 items-center gap-2 border-b border-sidebar-border px-6 lg:flex">
-          <div className="h-8 w-8 rounded-md bg-sidebar-primary" aria-hidden />
-          <span className="font-display text-xl font-bold">Tarefly</span>
+          <VeltrionLogo className="h-8 w-8" />
+          <span className="font-display text-xl font-bold">Veltrion Systems</span>
         </div>
         <nav className="flex-1 space-y-1 p-3 pt-20 lg:pt-3" aria-label="Navegação principal">
           {nav.map((item) => {
