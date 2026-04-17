@@ -45,6 +45,13 @@ export const Route = createRootRoute({
         content: "Kanban, equipes, prazos e analytics em uma só plataforma.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "Tarefly — Gerenciador de tarefas para empresas" },
+      { name: "description", content: "teste" },
+      { property: "og:description", content: "teste" },
+      { name: "twitter:description", content: "teste" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1b5c054d-7077-4b8e-a926-ae2b10abd020/id-preview-80a8d0a0--e4fc9ebb-6317-4e67-b148-c2713e704fee.lovable.app-1776465258099.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1b5c054d-7077-4b8e-a926-ae2b10abd020/id-preview-80a8d0a0--e4fc9ebb-6317-4e67-b148-c2713e704fee.lovable.app-1776465258099.png" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
