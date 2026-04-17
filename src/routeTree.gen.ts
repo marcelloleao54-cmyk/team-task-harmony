@@ -9,38 +9,176 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppTeamRouteImport } from './routes/_app.team'
+import { Route as AppProjectsRouteImport } from './routes/_app.projects'
+import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
+import { Route as AppBoardRouteImport } from './routes/_app.board'
+import { Route as AppApiDocsRouteImport } from './routes/_app.api-docs'
+import { Route as ApiV1TasksRouteImport } from './routes/api.v1.tasks'
+import { Route as ApiV1StatsRouteImport } from './routes/api.v1.stats'
+import { Route as ApiV1ProjectsRouteImport } from './routes/api.v1.projects'
 
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppTeamRoute = AppTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProjectsRoute = AppProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDashboardRoute = AppDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBoardRoute = AppBoardRouteImport.update({
+  id: '/board',
+  path: '/board',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppApiDocsRoute = AppApiDocsRouteImport.update({
+  id: '/api-docs',
+  path: '/api-docs',
+  getParentRoute: () => AppRoute,
+} as any)
+const ApiV1TasksRoute = ApiV1TasksRouteImport.update({
+  id: '/api/v1/tasks',
+  path: '/api/v1/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiV1StatsRoute = ApiV1StatsRouteImport.update({
+  id: '/api/v1/stats',
+  path: '/api/v1/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiV1ProjectsRoute = ApiV1ProjectsRouteImport.update({
+  id: '/api/v1/projects',
+  path: '/api/v1/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/api-docs': typeof AppApiDocsRoute
+  '/board': typeof AppBoardRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/projects': typeof AppProjectsRoute
+  '/team': typeof AppTeamRoute
+  '/api/v1/projects': typeof ApiV1ProjectsRoute
+  '/api/v1/stats': typeof ApiV1StatsRoute
+  '/api/v1/tasks': typeof ApiV1TasksRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/api-docs': typeof AppApiDocsRoute
+  '/board': typeof AppBoardRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/projects': typeof AppProjectsRoute
+  '/team': typeof AppTeamRoute
+  '/api/v1/projects': typeof ApiV1ProjectsRoute
+  '/api/v1/stats': typeof ApiV1StatsRoute
+  '/api/v1/tasks': typeof ApiV1TasksRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_app': typeof AppRouteWithChildren
+  '/login': typeof LoginRoute
+  '/_app/api-docs': typeof AppApiDocsRoute
+  '/_app/board': typeof AppBoardRoute
+  '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/projects': typeof AppProjectsRoute
+  '/_app/team': typeof AppTeamRoute
+  '/api/v1/projects': typeof ApiV1ProjectsRoute
+  '/api/v1/stats': typeof ApiV1StatsRoute
+  '/api/v1/tasks': typeof ApiV1TasksRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/api-docs'
+    | '/board'
+    | '/dashboard'
+    | '/projects'
+    | '/team'
+    | '/api/v1/projects'
+    | '/api/v1/stats'
+    | '/api/v1/tasks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/api-docs'
+    | '/board'
+    | '/dashboard'
+    | '/projects'
+    | '/team'
+    | '/api/v1/projects'
+    | '/api/v1/stats'
+    | '/api/v1/tasks'
+  id:
+    | '__root__'
+    | '/'
+    | '/_app'
+    | '/login'
+    | '/_app/api-docs'
+    | '/_app/board'
+    | '/_app/dashboard'
+    | '/_app/projects'
+    | '/_app/team'
+    | '/api/v1/projects'
+    | '/api/v1/stats'
+    | '/api/v1/tasks'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  ApiV1ProjectsRoute: typeof ApiV1ProjectsRoute
+  ApiV1StatsRoute: typeof ApiV1StatsRoute
+  ApiV1TasksRoute: typeof ApiV1TasksRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,21 +186,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/team': {
+      id: '/_app/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof AppTeamRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/projects': {
+      id: '/_app/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof AppProjectsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/dashboard': {
+      id: '/_app/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/board': {
+      id: '/_app/board'
+      path: '/board'
+      fullPath: '/board'
+      preLoaderRoute: typeof AppBoardRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/api-docs': {
+      id: '/_app/api-docs'
+      path: '/api-docs'
+      fullPath: '/api-docs'
+      preLoaderRoute: typeof AppApiDocsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/api/v1/tasks': {
+      id: '/api/v1/tasks'
+      path: '/api/v1/tasks'
+      fullPath: '/api/v1/tasks'
+      preLoaderRoute: typeof ApiV1TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/v1/stats': {
+      id: '/api/v1/stats'
+      path: '/api/v1/stats'
+      fullPath: '/api/v1/stats'
+      preLoaderRoute: typeof ApiV1StatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/v1/projects': {
+      id: '/api/v1/projects'
+      path: '/api/v1/projects'
+      fullPath: '/api/v1/projects'
+      preLoaderRoute: typeof ApiV1ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppApiDocsRoute: typeof AppApiDocsRoute
+  AppBoardRoute: typeof AppBoardRoute
+  AppDashboardRoute: typeof AppDashboardRoute
+  AppProjectsRoute: typeof AppProjectsRoute
+  AppTeamRoute: typeof AppTeamRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppApiDocsRoute: AppApiDocsRoute,
+  AppBoardRoute: AppBoardRoute,
+  AppDashboardRoute: AppDashboardRoute,
+  AppProjectsRoute: AppProjectsRoute,
+  AppTeamRoute: AppTeamRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  LoginRoute: LoginRoute,
+  ApiV1ProjectsRoute: ApiV1ProjectsRoute,
+  ApiV1StatsRoute: ApiV1StatsRoute,
+  ApiV1TasksRoute: ApiV1TasksRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
