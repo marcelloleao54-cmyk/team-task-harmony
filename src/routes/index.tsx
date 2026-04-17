@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, KanbanSquare, BarChart3, Users, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { VeltrionLogo } from "@/components/VeltrionLogo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Tarefly — Gestão corporativa de tarefas" },
+      { title: "Veltrion Systems — Gestão corporativa de tarefas" },
       {
         name: "description",
         content:
@@ -22,8 +23,8 @@ function Landing() {
       <header className="border-b border-border">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-md bg-primary" aria-hidden />
-            <span className="font-display text-xl font-bold">Tarefly</span>
+            <VeltrionLogo className="h-8 w-8" />
+            <span className="font-display text-xl font-bold">Veltrion Systems</span>
           </div>
           <nav className="flex items-center gap-2">
             <Link to="/login">
@@ -78,7 +79,7 @@ function Landing() {
       </section>
 
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Tarefly. Todos os direitos reservados.
+        © {new Date().getFullYear()} Veltrion Systems. Todos os direitos reservados.
       </footer>
     </div>
   );
